@@ -1,158 +1,212 @@
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SUN VIDEO - Vidéo</title>
+<title>SUN VIDEO</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
 
-    body {
-      background: #f5f5f5;
-      color: #111;
-    }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-    header {
-      height: 65px;
-      background: white;
-      display: flex;
-      align-items: center;
-      padding: 0 20px;
-      gap: 25px;
-      border-bottom: 1px solid #ddd;
-    }
+body{
+  background:#f5f5f5;
+  color:#111;
+}
 
-    .logo {
-      color: #e60000;
-      font-size: 24px;
-      font-weight: bold;
-    }
+header{
+  height:65px;
+  background:white;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
+  gap:20px;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
 
-    .search {
-      flex: 1;
-      max-width: 600px;
-      margin: auto;
-    }
+.logo{
+  color:#e60000;
+  font-size:24px;
+  font-weight:bold;
+}
 
-    .search input {
-      width: 100%;
-      padding: 12px 18px;
-      border: 1px solid #ccc;
-      border-radius: 25px;
-      font-size: 15px;
-    }
+.search{
+  flex:1;
+  max-width:600px;
+  margin:auto;
+}
 
-    .back {
-      border: none;
-      background: #eee;
-      padding: 10px 18px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
+.search input{
+  width:100%;
+  padding:12px 18px;
+  border:1px solid #ccc;
+  border-radius:25px;
+}
 
-    main {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
+.back{
+  border:0;
+  padding:10px 18px;
+  border-radius:20px;
+  cursor:pointer;
+}
 
-    .player {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #111;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 70px;
-    }
+main{
+  max-width:1100px;
+  margin:30px auto;
+  padding:0 20px;
+}
 
-    h1 {
-      margin-top: 20px;
-      font-size: 25px;
-    }
+.player{
+  width:100%;
+  aspect-ratio:16/9;
+  background:#111;
+  border-radius:12px;
+  overflow:hidden;
+}
 
-    .channel {
-      margin-top: 12px;
-      color: #666;
-    }
+.player video{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
 
-    .actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+.video-title{
+  font-size:26px;
+  font-weight:bold;
+  margin-top:20px;
+}
 
-    .actions button {
-      border: none;
-      padding: 12px 20px;
-      border-radius: 22px;
-      cursor: pointer;
-      background: #eee;
-      font-weight: bold;
-    }
+.channel{
+  color:#666;
+  margin-top:10px;
+}
 
-    .actions button:hover {
-      background: #ddd;
-    }
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
 
-    .description {
-      margin-top: 25px;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      line-height: 1.6;
-    }
+.actions button{
+  border:0;
+  background:#e9e9e9;
+  padding:12px 18px;
+  border-radius:22px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    @media (max-width: 600px) {
-      header {
-        padding: 0 10px;
-      }
+.actions button:hover{
+  background:#ddd;
+}
 
-      .logo {
-        font-size: 18px;
-      }
+.description{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  margin-top:25px;
+  line-height:1.6;
+}
 
-      .search {
-        display: none;
-      }
+.comments{
+  margin-top:30px;
+}
 
-      main {
-        margin-top: 15px;
-        padding: 0 10px;
-      }
+.comments h2{
+  margin-bottom:15px;
+}
 
-      h1 {
-        font-size: 20px;
-      }
+.comment-box{
+  display:flex;
+  gap:10px;
+}
 
-      .player {
-        border-radius: 8px;
-      }
-    }
-  </style>
+.comment-box input{
+  flex:1;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:20px;
+}
+
+.comment-box button{
+  border:0;
+  background:#e60000;
+  color:white;
+  padding:10px 20px;
+  border-radius:20px;
+  cursor:pointer;
+}
+
+#commentList{
+  margin-top:20px;
+}
+
+.comment{
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+
+@media(max-width:600px){
+
+  header{
+    padding:0 10px;
+  }
+
+  .logo{
+    font-size:18px;
+  }
+
+  .search{
+    display:none;
+  }
+
+  main{
+    margin-top:15px;
+    padding:0 10px;
+  }
+
+  .video-title{
+    font-size:20px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
 
-  <div class="logo">▶ SUN VIDEO</div>
-
-  <div class="search">
-    <input type="text" placeholder="Rechercher une vidéo...">
+  <div class="logo">
+    ▶ SUN VIDEO
   </div>
 
-  <button class="back" onclick="history.back()">
-    ← Retour
+  <div class="search">
+    <input
+      type="text"
+      placeholder="Rechercher..."
+    >
+  </div>
+
+  <button
+    class="back"
+    onclick="location.href='index.html'"
+  >
+    ← Accueil
   </button>
 
 </header>
@@ -160,12 +214,28 @@
 <main>
 
   <div class="player">
-    ▶
+
+    <video controls poster="">
+
+      <!--
+      PLUS TARD :
+      remplace cette adresse par ta propre vidéo MP4
+      -->
+
+      <source
+        src=""
+        type="video/mp4"
+      >
+
+      Votre navigateur ne peut pas lire cette vidéo.
+
+    </video>
+
   </div>
 
-  <h1>
+  <div class="video-title" id="title">
     Bienvenue sur SUN VIDEO
-  </h1>
+  </div>
 
   <div class="channel">
     SUN VIDEO • 1,2 k vues
@@ -173,13 +243,21 @@
 
   <div class="actions">
 
-    <button>👍 J'aime</button>
+    <button onclick="likeVideo()">
+      👍 J'aime <span id="likes">0</span>
+    </button>
 
-    <button>💬 Commenter</button>
+    <button onclick="focusComment()">
+      💬 Commenter
+    </button>
 
-    <button>↗️ Partager</button>
+    <button onclick="shareVideo()">
+      ↗️ Partager
+    </button>
 
-    <button>🔔 S'abonner</button>
+    <button onclick="subscribe()">
+      🔔 <span id="subscribeText">S'abonner</span>
+    </button>
 
   </div>
 
@@ -188,13 +266,124 @@
     <strong>Description</strong>
 
     <p>
-      Bienvenue sur SUN VIDEO, une nouvelle plateforme
-      pour regarder et partager des vidéos.
+      Bienvenue sur SUN VIDEO.
+      Cette plateforme permet de regarder,
+      rechercher et partager des vidéos.
     </p>
 
   </div>
 
+  <section class="comments">
+
+    <h2>Commentaires</h2>
+
+    <div class="comment-box">
+
+      <input
+        id="commentInput"
+        type="text"
+        placeholder="Écrire un commentaire..."
+      >
+
+      <button onclick="addComment()">
+        Publier
+      </button>
+
+    </div>
+
+    <div id="commentList"></div>
+
+  </section>
+
 </main>
+
+<script>
+
+let likes=0;
+let subscribed=false;
+
+function likeVideo(){
+
+  likes++;
+
+  document.getElementById("likes")
+    .innerText=likes;
+
+}
+
+function subscribe(){
+
+  subscribed=!subscribed;
+
+  document.getElementById("subscribeText")
+    .innerText =
+    subscribed ? "Abonné ✓" : "S'abonner";
+
+}
+
+function shareVideo(){
+
+  if(navigator.share){
+
+    navigator.share({
+      title:"SUN VIDEO",
+      text:"Regarde cette vidéo sur SUN VIDEO",
+      url:window.location.href
+    });
+
+  }else{
+
+    navigator.clipboard.writeText(
+      window.location.href
+    );
+
+    alert("Lien copié !");
+
+  }
+
+}
+
+function focusComment(){
+
+  document
+    .getElementById("commentInput")
+    .focus();
+
+}
+
+function addComment(){
+
+  const input =
+    document.getElementById("commentInput");
+
+  const text=input.value.trim();
+
+  if(text===""){
+
+    alert("Écris un commentaire.");
+
+    return;
+
+  }
+
+  const comment =
+    document.createElement("div");
+
+  comment.className="comment";
+
+  comment.innerHTML=
+    "<strong>Utilisateur</strong><br>"+text;
+
+  document
+    .getElementById("commentList")
+    .prepend(comment);
+
+  input.value="";
+
+}
+
+</script>
 
 </body>
 </html>
+```
