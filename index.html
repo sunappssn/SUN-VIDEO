@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SUN VIDEO</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    header {
+      height: 65px;
+      background: white;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 25px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #e60000;
+      white-space: nowrap;
+    }
+
+    .search {
+      flex: 1;
+      display: flex;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 12px 18px;
+      border: 1px solid #ccc;
+      border-radius: 25px 0 0 25px;
+      font-size: 15px;
+    }
+
+    .search button {
+      padding: 0 20px;
+      border: 1px solid #ccc;
+      border-left: none;
+      border-radius: 0 25px 25px 0;
+      background: #eee;
+      cursor: pointer;
+    }
+
+    .login {
+      background: #e60000;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 22px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .layout {
+      display: flex;
+    }
+
+    aside {
+      width: 220px;
+      background: white;
+      min-height: calc(100vh - 65px);
+      padding: 20px 10px;
+      position: fixed;
+    }
+
+    aside button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 5px;
+      border: none;
+      background: transparent;
+      text-align: left;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    aside button:hover {
+      background: #eee;
+    }
+
+    main {
+      margin-left: 220px;
+      padding: 25px;
+      width: 100%;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-bottom: 25px;
+    }
+
+    .categories button {
+      border: none;
+      background: #ddd;
+      padding: 9px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .categories button:first-child {
+      background: #111;
+      color: white;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .video {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .video:hover {
+      transform: translateY(-3px);
+    }
+
+    .thumbnail {
+      height: 160px;
+      background: linear-gradient(135deg, #222, #777);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 45px;
+    }
+
+    .video-info {
+      padding: 15px;
+    }
+
+    .video-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .channel {
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+
+      header {
+        gap: 10px;
+        padding: 0 10px;
+      }
+
+      .logo {
+        font-size: 19px;
+      }
+
+      .login {
+        display: none;
+      }
+
+      aside {
+        display: none;
+      }
+
+      main {
+        margin-left: 0;
+        padding: 15px;
+      }
+
+      .search {
+        max-width: none;
+      }
+
+      .videos {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">▶ SUN VIDEO</div>
+
+  <div class="search">
+    <input type="text" placeholder="Rechercher une vidéo...">
+    <button>🔍</button>
+  </div>
+
+  <button class="login">Se connecter</button>
+
+</header>
+
+<div class="layout">
+
+  <aside>
+
+    <button>🏠 Accueil</button>
+    <button>🔥 Tendances</button>
+    <button>🎵 Musique</button>
+    <button>⚽ Sport</button>
+    <button>🎮 Gaming</button>
+    <button>📚 Éducation</button>
+    <button>👤 Ma chaîne</button>
+
+  </aside>
+
+  <main>
+
+    <div class="categories">
+      <button>Tout</button>
+      <button>Musique</button>
+      <button>Sport</button>
+      <button>Gaming</button>
+      <button>Actualités</button>
+      <button>Éducation</button>
+    </div>
+
+    <h1>Vidéos recommandées</h1>
+
+    <div class="videos">
+
+      <div class="video">
+        <div class="thumbnail">▶</div>
+        <div class="video-info">
+          <div class="video-title">
+            Bienvenue sur SUN VIDEO
+          </div>
+          <div class="channel">
+            SUN VIDEO • 1,2 k vues
+          </div>
+        </div>
+      </div>
+
+      <div class="video">
+        <div class="thumbnail">▶</div>
+        <div class="video-info">
+          <div class="video-title">
+            Découvre notre plateforme
+          </div>
+          <div class="channel">
+            SUN VIDEO • 850 vues
+          </div>
+        </div>
+      </div>
+
+      <div class="video">
+        <div class="thumbnail">▶</div>
+        <div class="video-info">
+          <div class="video-title">
+            Musique et divertissement
+          </div>
+          <div class="channel">
+            SUN MUSIC • 2,4 k vues
+          </div>
+        </div>
+      </div>
+
+      <div class="video">
+        <div class="thumbnail">▶</div>
+        <div class="video-info">
+          <div class="video-title">
+            Football et sport
+          </div>
+          <div class="channel">
+            SUN SPORT • 3,1 k vues
+          </div>
+        </div>
+      </div>
+
+      <div class="video">
+        <div class="thumbnail">▶</div>
+        <div class="video-info">
+          <div class="video-title">
+            Apprendre facilement
+          </div>
+          <div class="channel">
+            SUN ÉDUCATION • 900 vues
+          </div>
+        </div>
+      </div>
+
+      <div class="video">
+        <div class="thumbnail">▶</div>
+        <div class="video-info">
+          <div class="video-title">
+            Gaming avec SUN VIDEO
+          </div>
+          <div class="channel">
+            SUN GAMING • 4,2 k vues
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
