@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>SUN VIDEO - Connexion</title>
 
 <style>
@@ -45,7 +44,6 @@ body{
 }
 
 h1{
-    font-size:25px;
     margin-bottom:10px;
 }
 
@@ -67,11 +65,6 @@ input{
     border-radius:8px;
     margin-bottom:18px;
     font-size:15px;
-    outline:none;
-}
-
-input:focus{
-    border-color:#e60000;
 }
 
 button{
@@ -86,19 +79,15 @@ button{
     cursor:pointer;
 }
 
-button:hover{
-    background:#c90000;
-}
-
-button:disabled{
-    background:#999;
-    cursor:not-allowed;
+#message{
+    margin-top:20px;
+    text-align:center;
+    font-weight:bold;
 }
 
 .register{
     text-align:center;
     margin-top:20px;
-    color:#666;
 }
 
 .register a{
@@ -113,13 +102,6 @@ button:disabled{
     margin-top:20px;
     color:#555;
     text-decoration:none;
-}
-
-#message{
-    margin-top:15px;
-    text-align:center;
-    font-weight:bold;
-    line-height:1.5;
 }
 </style>
 
@@ -144,9 +126,7 @@ button:disabled{
 
     <form id="loginForm">
 
-        <label for="email">
-            Email
-        </label>
+        <label>Email</label>
 
         <input
             id="email"
@@ -155,9 +135,7 @@ button:disabled{
             required
         >
 
-        <label for="password">
-            Mot de passe
-        </label>
+        <label>Mot de passe</label>
 
         <input
             id="password"
@@ -166,7 +144,7 @@ button:disabled{
             required
         >
 
-        <button id="loginButton" type="submit">
+        <button type="submit">
             Se connecter
         </button>
 
@@ -202,66 +180,93 @@ import {
 from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 
-/* =========================
-   CONFIGURATION FIREBASE
-========================= */
-
 const firebaseConfig = {
 
-    apiKey:
-    "AIzaSyCGwgzSrM2Z5-AW-Gjx4DJRp-RpJzrdZ4s",
+    apiKey: "AIzaSyCGwgzSrM2Z5-AW-Gjx4DJRp-RpJzrdZ4s",
 
-    authDomain:
-    "sun-video-8a3bd.firebaseapp.com",
+    authDomain: "sun-video-8a3bd.firebaseapp.com",
 
-    projectId:
-    "sun-video-8a3bd",
+    projectId: "sun-video-8a3bd",
 
-    storageBucket:
-    "sun-video-8a3bd.firebasestorage.app",
+    storageBucket: "sun-video-8a3bd.firebasestorage.app",
 
-    messagingSenderId:
-    "271262523518",
+    messagingSenderId: "271262523518",
 
-    appId:
-    "1:271262523518:web:f6b5997c3a5e34dec9782f"
+    appId: "1:271262523518:web:f6b5997c3a5e34dec9782f"
 
 };
 
-
-/* =========================
-   INITIALISATION FIREBASE
-========================= */
 
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 
+const form = document.getElementById("loginForm");
 
-/* =========================
-   ELEMENTS
-========================= */
+const message = document.getElementById("message");
 
-const form =
-    document.getElementById("loginForm");
-
-const emailInput =
-    document.getElementById("email");
-
-const passwordInput =
-    document.getElementById("password");
-
-const message =
-    document.getElementById("message");
-
-const loginButton =
-    document.getElementById("loginButton");
-
-
-/* =========================
-   CONNEXION
-========================= */
 
 form.addEventListener("submit", async function(event){
 
     event.preventDefault();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+
+    message.innerHTML =
+        "⏳ Connexion en cours...";
+
+    message.style.color = "#555";
+
+
+    try {
+
+        const userCredential =
+            await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            );
+
+
+        const user =
+            userCredential.user;
+
+
+        message.innerHTML =
+            "✅ Bienvenue " +
+            (user.displayName || user.email) +
+            " !";
+
+        message.style.color = "green";
+
+
+        setTimeout(function(){
+
+            window.location.href =
+                "index.html";
+
+        },1500);
+
+
+    } catch(error) {
+
+        console.log(error);
+
+        message.innerHTML =
+            "❌ " + error.code;
+
+        message.style.color = "red";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
