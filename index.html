@@ -66,7 +66,7 @@ header{
     background:#f5f5f5;
 }
 
-/* PROFIL */
+/* CONNEXION */
 
 .login{
     background:#e60000;
@@ -76,23 +76,19 @@ header{
     font-weight:bold;
     text-decoration:none;
     white-space:nowrap;
-    display:inline-block;
 }
 
-.login:hover{
-    background:#c90000;
-}
+/* PROFIL */
 
 .profile{
     display:none;
     align-items:center;
-    gap:10px;
 }
 
 .profile-button{
     background:white;
     border:1px solid #ddd;
-    padding:8px 12px;
+    padding:6px 12px 6px 6px;
     border-radius:25px;
     cursor:pointer;
     display:flex;
@@ -102,8 +98,8 @@ header{
 }
 
 .avatar{
-    width:32px;
-    height:32px;
+    width:34px;
+    height:34px;
     border-radius:50%;
     background:#e60000;
     color:white;
@@ -112,6 +108,8 @@ header{
     justify-content:center;
     font-weight:bold;
 }
+
+/* LAYOUT */
 
 .layout{
     display:flex;
@@ -143,6 +141,8 @@ header{
     padding:25px;
 }
 
+/* CATEGORIES */
+
 .categories{
     display:flex;
     gap:10px;
@@ -164,6 +164,8 @@ header{
     background:#111;
     color:white;
 }
+
+/* VIDEOS */
 
 .video-grid{
     display:grid;
@@ -203,7 +205,6 @@ header{
     font-size:16px;
     font-weight:bold;
     margin-bottom:8px;
-    line-height:1.3;
 }
 
 .channel{
@@ -224,6 +225,8 @@ header{
     color:#777;
     font-size:18px;
 }
+
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -307,17 +310,12 @@ header{
         placeholder="Rechercher..."
     >
 
-    <button
-        id="searchButton"
-        type="button"
-    >
+    <button id="searchButton" type="button">
         🔍
     </button>
 
 </div>
 
-
-<!-- BOUTON CONNEXION -->
 
 <a
     id="loginButton"
@@ -328,21 +326,19 @@ header{
 </a>
 
 
-<!-- PROFIL -->
-
 <div
     id="profile"
     class="profile"
 >
 
     <button
-        class="profile-button"
         id="profileButton"
+        class="profile-button"
     >
 
         <span
-            class="avatar"
             id="avatar"
+            class="avatar"
         >
             👤
         </span>
@@ -360,289 +356,266 @@ header{
 
 <div class="layout">
 
-```
 <aside class="sidebar">
 
-    <a href="index.html">
-        🏠 Accueil
-    </a>
+```
+<a href="index.html">
+    🏠 Accueil
+</a>
 
-    <a href="#" data-category="Tendances">
-        🔥 Tendances
-    </a>
+<a href="#" data-category="Tendances">
+    🔥 Tendances
+</a>
 
-    <a href="#" data-category="Musique">
-        🎵 Musique
-    </a>
+<a href="#" data-category="Musique">
+    🎵 Musique
+</a>
 
-    <a href="#" data-category="Sport">
-        ⚽ Sport
-    </a>
+<a href="#" data-category="Sport">
+    ⚽ Sport
+</a>
 
-    <a href="#" data-category="Gaming">
-        🎮 Gaming
-    </a>
+<a href="#" data-category="Gaming">
+    🎮 Gaming
+</a>
 
-    <a href="#" data-category="Éducation">
-        📚 Éducation
-    </a>
+<a href="#" data-category="Éducation">
+    📚 Éducation
+</a>
 
-    <a href="#" data-category="Actualités">
-        📰 Actualités
-    </a>
+<a href="#" data-category="Actualités">
+    📰 Actualités
+</a>
 
-    <a href="login.html">
-        👤 Ma chaîne
-    </a>
+<a id="channelLink" href="login.html">
+    👤 Ma chaîne
+</a>
+```
 
 </aside>
 
-
 <main class="content">
 
-    <div class="categories">
+<div class="categories">
 
-        <button
-            class="category active"
-            data-category="Tous"
-        >
-            Tous
-        </button>
+```
+<button class="category active" data-category="Tous">
+    Tous
+</button>
 
-        <button
-            class="category"
-            data-category="Musique"
-        >
-            Musique
-        </button>
+<button class="category" data-category="Musique">
+    Musique
+</button>
 
-        <button
-            class="category"
-            data-category="Sport"
-        >
-            Sport
-        </button>
+<button class="category" data-category="Sport">
+    Sport
+</button>
 
-        <button
-            class="category"
-            data-category="Gaming"
-        >
-            Gaming
-        </button>
+<button class="category" data-category="Gaming">
+    Gaming
+</button>
 
-        <button
-            class="category"
-            data-category="Éducation"
-        >
-            Éducation
-        </button>
+<button class="category" data-category="Éducation">
+    Éducation
+</button>
 
-        <button
-            class="category"
-            data-category="Actualités"
-        >
-            Actualités
-        </button>
+<button class="category" data-category="Actualités">
+    Actualités
+</button>
+```
 
+</div>
+
+<div class="video-grid" id="videoGrid">
+
+```
+<div
+    class="video-card"
+    data-category="Musique"
+    data-title="Les nouveautés musicales"
+    onclick="openVideo(1)"
+>
+
+    <div class="thumbnail">
+        🎵
     </div>
 
+    <div class="video-info">
 
-    <div
-        class="video-grid"
-        id="videoGrid"
-    >
-
-        <div
-            class="video-card"
-            data-category="Musique"
-            data-title="Les nouveautés musicales"
-            onclick="openVideo(1)"
-        >
-
-            <div class="thumbnail">
-                🎵
-            </div>
-
-            <div class="video-info">
-
-                <div class="video-title">
-                    Les nouveautés musicales
-                </div>
-
-                <div class="channel">
-                    SUN MUSIC
-                </div>
-
-                <div class="views">
-                    1,2 k vues
-                </div>
-
-            </div>
-
+        <div class="video-title">
+            Les nouveautés musicales
         </div>
 
-
-        <div
-            class="video-card"
-            data-category="Sport"
-            data-title="Les meilleurs moments du football"
-            onclick="openVideo(2)"
-        >
-
-            <div class="thumbnail">
-                ⚽
-            </div>
-
-            <div class="video-info">
-
-                <div class="video-title">
-                    Les meilleurs moments du football
-                </div>
-
-                <div class="channel">
-                    SUN SPORT
-                </div>
-
-                <div class="views">
-                    3,5 k vues
-                </div>
-
-            </div>
-
+        <div class="channel">
+            SUN MUSIC
         </div>
 
-
-        <div
-            class="video-card"
-            data-category="Gaming"
-            data-title="Nouvelle partie gaming"
-            onclick="openVideo(3)"
-        >
-
-            <div class="thumbnail">
-                🎮
-            </div>
-
-            <div class="video-info">
-
-                <div class="video-title">
-                    Nouvelle partie gaming
-                </div>
-
-                <div class="channel">
-                    SUN GAMING
-                </div>
-
-                <div class="views">
-                    980 vues
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="video-card"
-            data-category="Éducation"
-            data-title="Apprendre quelque chose de nouveau"
-            onclick="openVideo(4)"
-        >
-
-            <div class="thumbnail">
-                📚
-            </div>
-
-            <div class="video-info">
-
-                <div class="video-title">
-                    Apprendre quelque chose de nouveau
-                </div>
-
-                <div class="channel">
-                    SUN ÉDUCATION
-                </div>
-
-                <div class="views">
-                    750 vues
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="video-card"
-            data-category="Actualités"
-            data-title="Les actualités du jour"
-            onclick="openVideo(5)"
-        >
-
-            <div class="thumbnail">
-                📰
-            </div>
-
-            <div class="video-info">
-
-                <div class="video-title">
-                    Les actualités du jour
-                </div>
-
-                <div class="channel">
-                    SUN ACTU
-                </div>
-
-                <div class="views">
-                    2,1 k vues
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div
-            class="video-card"
-            data-category="Sport"
-            data-title="Les meilleurs buts"
-            onclick="openVideo(6)"
-        >
-
-            <div class="thumbnail">
-                🏆
-            </div>
-
-            <div class="video-info">
-
-                <div class="video-title">
-                    Les meilleurs buts
-                </div>
-
-                <div class="channel">
-                    SUN FOOT
-                </div>
-
-                <div class="views">
-                    4,8 k vues
-                </div>
-
-            </div>
-
+        <div class="views">
+            1,2 k vues
         </div>
 
     </div>
 
+</div>
 
-    <div
-        id="noResult"
-        class="no-result"
-    >
-        Aucun résultat trouvé.
+
+<div
+    class="video-card"
+    data-category="Sport"
+    data-title="Les meilleurs moments du football"
+    onclick="openVideo(2)"
+>
+
+    <div class="thumbnail">
+        ⚽
     </div>
+
+    <div class="video-info">
+
+        <div class="video-title">
+            Les meilleurs moments du football
+        </div>
+
+        <div class="channel">
+            SUN SPORT
+        </div>
+
+        <div class="views">
+            3,5 k vues
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    class="video-card"
+    data-category="Gaming"
+    data-title="Nouvelle partie gaming"
+    onclick="openVideo(3)"
+>
+
+    <div class="thumbnail">
+        🎮
+    </div>
+
+    <div class="video-info">
+
+        <div class="video-title">
+            Nouvelle partie gaming
+        </div>
+
+        <div class="channel">
+            SUN GAMING
+        </div>
+
+        <div class="views">
+            980 vues
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    class="video-card"
+    data-category="Éducation"
+    data-title="Apprendre quelque chose de nouveau"
+    onclick="openVideo(4)"
+>
+
+    <div class="thumbnail">
+        📚
+    </div>
+
+    <div class="video-info">
+
+        <div class="video-title">
+            Apprendre quelque chose de nouveau
+        </div>
+
+        <div class="channel">
+            SUN ÉDUCATION
+        </div>
+
+        <div class="views">
+            750 vues
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    class="video-card"
+    data-category="Actualités"
+    data-title="Les actualités du jour"
+    onclick="openVideo(5)"
+>
+
+    <div class="thumbnail">
+        📰
+    </div>
+
+    <div class="video-info">
+
+        <div class="video-title">
+            Les actualités du jour
+        </div>
+
+        <div class="channel">
+            SUN ACTU
+        </div>
+
+        <div class="views">
+            2,1 k vues
+        </div>
+
+    </div>
+
+</div>
+
+
+<div
+    class="video-card"
+    data-category="Sport"
+    data-title="Les meilleurs buts"
+    onclick="openVideo(6)"
+>
+
+    <div class="thumbnail">
+        🏆
+    </div>
+
+    <div class="video-info">
+
+        <div class="video-title">
+            Les meilleurs buts
+        </div>
+
+        <div class="channel">
+            SUN FOOT
+        </div>
+
+        <div class="views">
+            4,8 k vues
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<div id="noResult" class="no-result">
+    Aucun résultat trouvé.
+</div>
 
 </main>
-```
 
 </div>
 
@@ -653,8 +626,7 @@ from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 import {
     getAuth,
-    onAuthStateChanged,
-    signOut
+    onAuthStateChanged
 }
 from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
@@ -691,7 +663,7 @@ const auth =
     getAuth(app);
 
 
-/* PROFIL */
+/* ELEMENTS */
 
 const loginButton =
     document.getElementById("loginButton");
@@ -699,73 +671,89 @@ const loginButton =
 const profile =
     document.getElementById("profile");
 
+const profileButton =
+    document.getElementById("profileButton");
+
 const profileName =
     document.getElementById("profileName");
 
 const avatar =
     document.getElementById("avatar");
 
-const profileButton =
-    document.getElementById("profileButton");
+const channelLink =
+    document.getElementById("channelLink");
 
 
-/* VERIFIER L'UTILISATEUR */
+/* UTILISATEUR CONNECTÉ */
 
-onAuthStateChanged(auth, function(user){
-
-    if(user){
+onAuthStateChanged(
+    auth,
+    function(user){
 
         console.log(
-            "Utilisateur connecté :",
-            user.email
+            "Firebase utilisateur :",
+            user
         );
 
 
-        /* CACHER SE CONNECTER */
+        if(user){
 
-        loginButton.style.display =
-            "none";
+            /* CACHER LE BOUTON CONNEXION */
 
-
-        /* AFFICHER PROFIL */
-
-        profile.style.display =
-            "flex";
+            loginButton.style.display =
+                "none";
 
 
-        /* NOM */
+            /* AFFICHER LE PROFIL */
 
-        const name =
-            user.displayName ||
-            user.email.split("@")[0];
-
-
-        profileName.textContent =
-            name;
+            profile.style.display =
+                "flex";
 
 
-        /* PREMIERE LETTRE */
+            /* NOM DU COMPTE */
 
-        avatar.textContent =
-            name.charAt(0).toUpperCase();
+            const name =
+                user.displayName ||
+                user.email.split("@")[0];
 
 
-    }else{
+            profileName.textContent =
+                name;
 
-        /* PERSONNE CONNECTÉ */
 
-        loginButton.style.display =
-            "inline-block";
+            /* AVATAR */
 
-        profile.style.display =
-            "none";
+            avatar.textContent =
+                name.charAt(0).toUpperCase();
+
+
+            /* MA CHAÎNE */
+
+            channelLink.href =
+                "profile.html";
+
+        }
+
+        else{
+
+            /* UTILISATEUR NON CONNECTÉ */
+
+            loginButton.style.display =
+                "inline-block";
+
+            profile.style.display =
+                "none";
+
+            channelLink.href =
+                "login.html";
+
+        }
 
     }
+);
 
-});
 
-
-/* CLIC SUR PROFIL */
+/* CLIC SUR LE PROFIL */
 
 profileButton.addEventListener(
     "click",
@@ -825,30 +813,27 @@ function filterVideos(){
 
         if(searchOK && categoryOK){
 
-            card.style.display = "";
+            card.style.display =
+                "";
 
             count++;
 
-        }else{
+        }
 
-            card.style.display = "none";
+        else{
+
+            card.style.display =
+                "none";
 
         }
 
     });
 
 
-    if(count === 0){
-
-        noResult.style.display =
-            "block";
-
-    }else{
-
-        noResult.style.display =
-            "none";
-
-    }
+    noResult.style.display =
+        count === 0
+        ? "block"
+        : "none";
 
 }
 
@@ -883,10 +868,8 @@ document
 
             this.classList.add("active");
 
-
             currentCategory =
                 this.dataset.category;
-
 
             filterVideos();
 
@@ -928,4 +911,3 @@ function openVideo(id){
 
 </body>
 </html>
-
