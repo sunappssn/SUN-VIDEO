@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SUN VIDEO - Mon profil</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#111;
+}
+
+/* HEADER */
+
+header{
+    height:65px;
+    background:white;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#e60000;
+}
+
+.logo a{
+    color:#e60000;
+    text-decoration:none;
+}
+
+/* CONTENU */
+
+.container{
+    max-width:900px;
+    margin:40px auto;
+    padding:20px;
+}
+
+/* PROFIL */
+
+.profile-card{
+    background:white;
+    border-radius:15px;
+    padding:35px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+    text-align:center;
+}
+
+.avatar{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    background:#e60000;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 20px;
+    font-size:40px;
+    font-weight:bold;
+}
+
+h1{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.email{
+    color:#777;
+    margin-bottom:25px;
+}
+
+/* INFORMATIONS */
+
+.info{
+    background:#f5f5f5;
+    border-radius:10px;
+    padding:18px;
+    margin-top:20px;
+    text-align:left;
+}
+
+.info-title{
+    font-size:13px;
+    color:#777;
+    margin-bottom:5px;
+}
+
+.info-value{
+    font-size:16px;
+    font-weight:bold;
+}
+
+/* BOUTONS */
+
+.buttons{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.button{
+    border:none;
+    padding:12px 20px;
+    border-radius:25px;
+    font-weight:bold;
+    cursor:pointer;
+    text-decoration:none;
+    font-size:15px;
+}
+
+.home{
+    background:#111;
+    color:white;
+}
+
+.logout{
+    background:#e60000;
+    color:white;
+}
+
+.button:hover{
+    opacity:.85;
+}
+
+/* VIDEOS */
+
+.videos{
+    margin-top:30px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.videos h2{
+    margin-bottom:10px;
+}
+
+.videos p{
+    color:#777;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .container{
+        margin:20px auto;
+        padding:15px;
+    }
+
+    .profile-card{
+        padding:25px 18px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+```
+<div class="logo">
+    <a href="index.html">
+        ▶ SUN VIDEO
+    </a>
+</div>
+```
+
+</header>
+
+<main class="container">
+
+```
+<!-- PROFIL -->
+
+<section class="profile-card">
+
+    <div
+        class="avatar"
+        id="avatar"
+    >
+        👤
+    </div>
+
+
+    <h1 id="profileName">
+        Chargement...
+    </h1>
+
+
+    <p
+        class="email"
+        id="profileEmail"
+    >
+        Chargement...
+    </p>
+
+
+    <div class="info">
+
+        <div class="info-title">
+            Nom d'utilisateur
+        </div>
+
+        <div
+            class="info-value"
+            id="username"
+        >
+            Chargement...
+        </div>
+
+    </div>
+
+
+    <div class="info">
+
+        <div class="info-title">
+            Adresse e-mail
+        </div>
+
+        <div
+            class="info-value"
+            id="email"
+        >
+            Chargement...
+        </div>
+
+    </div>
+
+
+    <div class="buttons">
+
+        <a
+            href="index.html"
+            class="button home"
+        >
+            🏠 Accueil
+        </a>
+
+
+        <button
+            id="logoutButton"
+            class="button logout"
+        >
+            🚪 Se déconnecter
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- VIDEOS -->
+
+<section class="videos">
+
+    <h2>
+        📹 Mes vidéos
+    </h2>
+
+    <p>
+        Tu n'as encore publié aucune vidéo.
+    </p>
+
+</section>
+```
+
+</main>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyCGwgzSrM2Z5-AW-Gjx4DJRp-RpJzrdZ4s",
+
+    authDomain:
+    "sun-video-8a3bd.firebaseapp.com",
+
+    projectId:
+    "sun-video-8a3bd",
+
+    storageBucket:
+    "sun-video-8a3bd.firebasestorage.app",
+
+    messagingSenderId:
+    "271262523518",
+
+    appId:
+    "1:271262523518:web:f6b5997c3a5e34dec9782f"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+
+/* ELEMENTS */
+
+const avatar =
+    document.getElementById("avatar");
+
+const profileName =
+    document.getElementById("profileName");
+
+const profileEmail =
+    document.getElementById("profileEmail");
+
+const username =
+    document.getElementById("username");
+
+const email =
+    document.getElementById("email");
+
+const logoutButton =
+    document.getElementById("logoutButton");
+
+
+/* VERIFIER LE COMPTE */
+
+onAuthStateChanged(auth, function(user){
+
+    if(user){
+
+        const name =
+            user.displayName ||
+            user.email.split("@")[0];
+
+
+        /* NOM */
+
+        profileName.textContent =
+            name;
+
+
+        username.textContent =
+            name;
+
+
+        /* EMAIL */
+
+        profileEmail.textContent =
