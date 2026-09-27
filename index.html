@@ -1,12 +1,8 @@
-
-```html
 <!DOCTYPE html>
+
 <html lang="fr">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SUN VIDEO</title>
@@ -14,261 +10,279 @@
 <style>
 
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
-font-family:Arial,sans-serif;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
 }
 
 body{
-background:#f5f5f5;
-color:#111;
+    background:#f5f5f5;
+    color:#111;
 }
 
-/* HEADER */
-
 header{
-height:65px;
-background:white;
-border-bottom:1px solid #ddd;
-display:flex;
-align-items:center;
-padding:0 20px;
-gap:20px;
-position:sticky;
-top:0;
-z-index:10;
+    height:65px;
+    background:white;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    gap:20px;
+    position:sticky;
+    top:0;
+    z-index:10;
 }
 
 .logo{
-font-size:25px;
-font-weight:bold;
-color:#e60000;
-white-space:nowrap;
+    font-size:25px;
+    font-weight:bold;
+    color:#e60000;
+    white-space:nowrap;
 }
 
 .search{
-flex:1;
-display:flex;
-max-width:650px;
-margin:auto;
+    flex:1;
+    display:flex;
+    max-width:650px;
+    margin:auto;
 }
 
 .search input{
-flex:1;
-padding:12px 16px;
-border:1px solid #ccc;
-border-radius:25px 0 0 25px;
-font-size:15px;
-outline:none;
+    flex:1;
+    padding:12px 16px;
+    border:1px solid #ccc;
+    border-radius:25px 0 0 25px;
+    font-size:15px;
+    outline:none;
 }
 
 .search button{
-padding:0 20px;
-border:1px solid #ccc;
-border-left:none;
-border-radius:0 25px 25px 0;
-cursor:pointer;
-background:#f5f5f5;
+    padding:0 20px;
+    border:1px solid #ccc;
+    border-left:none;
+    border-radius:0 25px 25px 0;
+    cursor:pointer;
+    background:#f5f5f5;
 }
 
+/* PROFIL */
+
 .login{
-background:#e60000;
-color:white;
-padding:10px 18px;
-border-radius:22px;
-font-weight:bold;
-text-decoration:none;
-white-space:nowrap;
-display:inline-block;
+    background:#e60000;
+    color:white;
+    padding:10px 18px;
+    border-radius:22px;
+    font-weight:bold;
+    text-decoration:none;
+    white-space:nowrap;
+    display:inline-block;
 }
 
 .login:hover{
-background:#c90000;
+    background:#c90000;
 }
 
-/* LAYOUT */
+.profile{
+    display:none;
+    align-items:center;
+    gap:10px;
+}
+
+.profile-button{
+    background:white;
+    border:1px solid #ddd;
+    padding:8px 12px;
+    border-radius:25px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:bold;
+}
+
+.avatar{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:#e60000;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
 
 .layout{
-display:flex;
+    display:flex;
 }
 
-/* SIDEBAR */
-
 .sidebar{
-width:220px;
-min-height:calc(100vh - 65px);
-background:white;
-border-right:1px solid #ddd;
-padding:20px 10px;
+    width:220px;
+    min-height:calc(100vh - 65px);
+    background:white;
+    border-right:1px solid #ddd;
+    padding:20px 10px;
 }
 
 .sidebar a{
-display:block;
-text-decoration:none;
-color:#222;
-padding:13px 15px;
-border-radius:10px;
-margin-bottom:5px;
+    display:block;
+    text-decoration:none;
+    color:#222;
+    padding:13px 15px;
+    border-radius:10px;
+    margin-bottom:5px;
 }
 
 .sidebar a:hover{
-background:#eee;
+    background:#eee;
 }
-
-/* CONTENT */
 
 .content{
-flex:1;
-padding:25px;
+    flex:1;
+    padding:25px;
 }
 
-/* CATEGORIES */
-
 .categories{
-display:flex;
-gap:10px;
-overflow-x:auto;
-margin-bottom:25px;
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    margin-bottom:25px;
 }
 
 .category{
-border:none;
-background:#eee;
-padding:9px 16px;
-border-radius:20px;
-cursor:pointer;
-white-space:nowrap;
+    border:none;
+    background:#eee;
+    padding:9px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    white-space:nowrap;
 }
 
 .category:hover,
 .category.active{
-background:#111;
-color:white;
+    background:#111;
+    color:white;
 }
 
-/* VIDEOS */
-
 .video-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:25px 18px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px 18px;
 }
 
 .video-card{
-background:white;
-border-radius:10px;
-overflow:hidden;
-cursor:pointer;
-transition:.2s;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
 }
 
 .video-card:hover{
-transform:translateY(-3px);
-box-shadow:0 4px 15px rgba(0,0,0,.12);
+    transform:translateY(-3px);
+    box-shadow:0 4px 15px rgba(0,0,0,.12);
 }
 
 .thumbnail{
-width:100%;
-aspect-ratio:16/9;
-background:#222;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-font-size:45px;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#222;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:45px;
 }
 
 .video-info{
-padding:13px;
+    padding:13px;
 }
 
 .video-title{
-font-size:16px;
-font-weight:bold;
-margin-bottom:8px;
-line-height:1.3;
+    font-size:16px;
+    font-weight:bold;
+    margin-bottom:8px;
+    line-height:1.3;
 }
 
 .channel{
-color:#666;
-font-size:14px;
-margin-bottom:5px;
+    color:#666;
+    font-size:14px;
+    margin-bottom:5px;
 }
 
 .views{
-color:#777;
-font-size:13px;
+    color:#777;
+    font-size:13px;
 }
 
 .no-result{
-display:none;
-text-align:center;
-padding:50px;
-color:#777;
-font-size:18px;
+    display:none;
+    text-align:center;
+    padding:50px;
+    color:#777;
+    font-size:18px;
 }
-
-/* MOBILE */
 
 @media(max-width:900px){
 
-.video-grid{
-grid-template-columns:repeat(2,1fr);
-}
+    .video-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.sidebar{
-width:180px;
-}
+    .sidebar{
+        width:180px;
+    }
 
 }
 
 @media(max-width:650px){
 
-header{
-padding:0 10px;
-gap:10px;
-}
+    header{
+        padding:0 10px;
+        gap:10px;
+    }
 
-.logo{
-font-size:20px;
-}
+    .logo{
+        font-size:20px;
+    }
 
-.search{
-display:none;
-}
+    .search{
+        display:none;
+    }
 
-.login{
-padding:9px 12px;
-font-size:13px;
-}
+    .login{
+        padding:9px 12px;
+        font-size:13px;
+    }
 
-.layout{
-display:block;
-}
+    .layout{
+        display:block;
+    }
 
-.sidebar{
-width:100%;
-min-height:auto;
-display:flex;
-overflow-x:auto;
-padding:8px;
-border-right:none;
-border-bottom:1px solid #ddd;
-}
+    .sidebar{
+        width:100%;
+        min-height:auto;
+        display:flex;
+        overflow-x:auto;
+        padding:8px;
+        border-right:none;
+        border-bottom:1px solid #ddd;
+    }
 
-.sidebar a{
-white-space:nowrap;
-margin:0;
-}
+    .sidebar a{
+        white-space:nowrap;
+        margin:0;
+    }
 
-.content{
-padding:15px;
-}
+    .content{
+        padding:15px;
+    }
 
-.video-grid{
-grid-template-columns:1fr;
-}
+    .video-grid{
+        grid-template-columns:1fr;
+    }
 
 }
 
@@ -276,495 +290,642 @@ grid-template-columns:1fr;
 
 </head>
 
-
 <body>
-
 
 <header>
 
+```
 <div class="logo">
-▶ SUN VIDEO
+    ▶ SUN VIDEO
 </div>
-
 
 <div class="search">
 
-<input
-id="searchInput"
-type="text"
-placeholder="Rechercher..."
->
+    <input
+        id="searchInput"
+        type="text"
+        placeholder="Rechercher..."
+    >
 
-<button
-id="searchButton"
-type="button"
->
-🔍
-</button>
+    <button
+        id="searchButton"
+        type="button"
+    >
+        🔍
+    </button>
 
 </div>
 
 
-<!-- BOUTON DE CONNEXION -->
+<!-- BOUTON CONNEXION -->
 
 <a
-class="login"
-href="login.html"
+    id="loginButton"
+    class="login"
+    href="login.html"
 >
-Se connecter
+    Se connecter
 </a>
 
+
+<!-- PROFIL -->
+
+<div
+    id="profile"
+    class="profile"
+>
+
+    <button
+        class="profile-button"
+        id="profileButton"
+    >
+
+        <span
+            class="avatar"
+            id="avatar"
+        >
+            👤
+        </span>
+
+        <span id="profileName">
+            Mon compte
+        </span>
+
+    </button>
+
+</div>
+```
 
 </header>
 
-
 <div class="layout">
 
-
-<!-- MENU -->
-
+```
 <aside class="sidebar">
 
-<a href="index.html">
-🏠 Accueil
-</a>
+    <a href="index.html">
+        🏠 Accueil
+    </a>
 
-<a href="#" data-category="Tendances">
-🔥 Tendances
-</a>
+    <a href="#" data-category="Tendances">
+        🔥 Tendances
+    </a>
 
-<a href="#" data-category="Musique">
-🎵 Musique
-</a>
+    <a href="#" data-category="Musique">
+        🎵 Musique
+    </a>
 
-<a href="#" data-category="Sport">
-⚽ Sport
-</a>
+    <a href="#" data-category="Sport">
+        ⚽ Sport
+    </a>
 
-<a href="#" data-category="Gaming">
-🎮 Gaming
-</a>
+    <a href="#" data-category="Gaming">
+        🎮 Gaming
+    </a>
 
-<a href="#" data-category="Éducation">
-📚 Éducation
-</a>
+    <a href="#" data-category="Éducation">
+        📚 Éducation
+    </a>
 
-<a href="#" data-category="Actualités">
-📰 Actualités
-</a>
+    <a href="#" data-category="Actualités">
+        📰 Actualités
+    </a>
 
-<a href="login.html">
-👤 Ma chaîne
-</a>
+    <a href="login.html">
+        👤 Ma chaîne
+    </a>
 
 </aside>
 
 
-<!-- CONTENU -->
-
 <main class="content">
 
+    <div class="categories">
+
+        <button
+            class="category active"
+            data-category="Tous"
+        >
+            Tous
+        </button>
+
+        <button
+            class="category"
+            data-category="Musique"
+        >
+            Musique
+        </button>
+
+        <button
+            class="category"
+            data-category="Sport"
+        >
+            Sport
+        </button>
+
+        <button
+            class="category"
+            data-category="Gaming"
+        >
+            Gaming
+        </button>
+
+        <button
+            class="category"
+            data-category="Éducation"
+        >
+            Éducation
+        </button>
+
+        <button
+            class="category"
+            data-category="Actualités"
+        >
+            Actualités
+        </button>
 
-<div class="categories">
-
-<button
-class="category active"
-data-category="Tous"
->
-Tous
-</button>
-
-<button
-class="category"
-data-category="Musique"
->
-Musique
-</button>
+    </div>
 
-<button
-class="category"
-data-category="Sport"
->
-Sport
-</button>
 
-<button
-class="category"
-data-category="Gaming"
->
-Gaming
-</button>
+    <div
+        class="video-grid"
+        id="videoGrid"
+    >
 
-<button
-class="category"
-data-category="Éducation"
->
-Éducation
-</button>
+        <div
+            class="video-card"
+            data-category="Musique"
+            data-title="Les nouveautés musicales"
+            onclick="openVideo(1)"
+        >
 
-<button
-class="category"
-data-category="Actualités"
->
-Actualités
-</button>
+            <div class="thumbnail">
+                🎵
+            </div>
 
-</div>
+            <div class="video-info">
 
+                <div class="video-title">
+                    Les nouveautés musicales
+                </div>
 
-<!-- VIDEOS -->
+                <div class="channel">
+                    SUN MUSIC
+                </div>
 
-<div
-class="video-grid"
-id="videoGrid"
->
+                <div class="views">
+                    1,2 k vues
+                </div>
 
+            </div>
 
-<div
-class="video-card"
-data-category="Musique"
-data-title="Les nouveautés musicales"
-onclick="openVideo(1)"
->
+        </div>
 
-<div class="thumbnail">
-🎵
-</div>
 
-<div class="video-info">
+        <div
+            class="video-card"
+            data-category="Sport"
+            data-title="Les meilleurs moments du football"
+            onclick="openVideo(2)"
+        >
 
-<div class="video-title">
-Les nouveautés musicales
-</div>
+            <div class="thumbnail">
+                ⚽
+            </div>
 
-<div class="channel">
-SUN MUSIC
-</div>
+            <div class="video-info">
 
-<div class="views">
-1,2 k vues
-</div>
+                <div class="video-title">
+                    Les meilleurs moments du football
+                </div>
 
-</div>
+                <div class="channel">
+                    SUN SPORT
+                </div>
 
-</div>
+                <div class="views">
+                    3,5 k vues
+                </div>
 
+            </div>
 
-<div
-class="video-card"
-data-category="Sport"
-data-title="Les meilleurs moments du football"
-onclick="openVideo(2)"
->
+        </div>
 
-<div class="thumbnail">
-⚽
-</div>
 
-<div class="video-info">
+        <div
+            class="video-card"
+            data-category="Gaming"
+            data-title="Nouvelle partie gaming"
+            onclick="openVideo(3)"
+        >
 
-<div class="video-title">
-Les meilleurs moments du football
-</div>
+            <div class="thumbnail">
+                🎮
+            </div>
 
-<div class="channel">
-SUN SPORT
-</div>
+            <div class="video-info">
 
-<div class="views">
-3,5 k vues
-</div>
+                <div class="video-title">
+                    Nouvelle partie gaming
+                </div>
 
-</div>
+                <div class="channel">
+                    SUN GAMING
+                </div>
 
-</div>
+                <div class="views">
+                    980 vues
+                </div>
 
+            </div>
 
-<div
-class="video-card"
-data-category="Gaming"
-data-title="Nouvelle partie gaming"
-onclick="openVideo(3)"
->
+        </div>
 
-<div class="thumbnail">
-🎮
-</div>
 
-<div class="video-info">
+        <div
+            class="video-card"
+            data-category="Éducation"
+            data-title="Apprendre quelque chose de nouveau"
+            onclick="openVideo(4)"
+        >
 
-<div class="video-title">
-Nouvelle partie gaming
-</div>
+            <div class="thumbnail">
+                📚
+            </div>
 
-<div class="channel">
-SUN GAMING
-</div>
+            <div class="video-info">
 
-<div class="views">
-980 vues
-</div>
+                <div class="video-title">
+                    Apprendre quelque chose de nouveau
+                </div>
 
-</div>
+                <div class="channel">
+                    SUN ÉDUCATION
+                </div>
 
-</div>
+                <div class="views">
+                    750 vues
+                </div>
 
+            </div>
 
-<div
-class="video-card"
-data-category="Éducation"
-data-title="Apprendre quelque chose de nouveau"
-onclick="openVideo(4)"
->
+        </div>
 
-<div class="thumbnail">
-📚
-</div>
 
-<div class="video-info">
+        <div
+            class="video-card"
+            data-category="Actualités"
+            data-title="Les actualités du jour"
+            onclick="openVideo(5)"
+        >
 
-<div class="video-title">
-Apprendre quelque chose de nouveau
-</div>
+            <div class="thumbnail">
+                📰
+            </div>
 
-<div class="channel">
-SUN ÉDUCATION
-</div>
+            <div class="video-info">
 
-<div class="views">
-750 vues
-</div>
+                <div class="video-title">
+                    Les actualités du jour
+                </div>
 
-</div>
+                <div class="channel">
+                    SUN ACTU
+                </div>
 
-</div>
+                <div class="views">
+                    2,1 k vues
+                </div>
 
+            </div>
 
-<div
-class="video-card"
-data-category="Actualités"
-data-title="Les actualités du jour"
-onclick="openVideo(5)"
->
+        </div>
 
-<div class="thumbnail">
-📰
-</div>
 
-<div class="video-info">
+        <div
+            class="video-card"
+            data-category="Sport"
+            data-title="Les meilleurs buts"
+            onclick="openVideo(6)"
+        >
 
-<div class="video-title">
-Les actualités du jour
-</div>
+            <div class="thumbnail">
+                🏆
+            </div>
 
-<div class="channel">
-SUN ACTU
-</div>
+            <div class="video-info">
 
-<div class="views">
-2,1 k vues
-</div>
+                <div class="video-title">
+                    Les meilleurs buts
+                </div>
 
-</div>
+                <div class="channel">
+                    SUN FOOT
+                </div>
 
-</div>
+                <div class="views">
+                    4,8 k vues
+                </div>
 
+            </div>
 
-<div
-class="video-card"
-data-category="Sport"
-data-title="Les meilleurs buts"
-onclick="openVideo(6)"
->
+        </div>
 
-<div class="thumbnail">
-🏆
-</div>
+    </div>
 
-<div class="video-info">
 
-<div class="video-title">
-Les meilleurs buts
-</div>
-
-<div class="channel">
-SUN FOOT
-</div>
-
-<div class="views">
-4,8 k vues
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div
-id="noResult"
-class="no-result"
->
-Aucun résultat trouvé.
-</div>
-
+    <div
+        id="noResult"
+        class="no-result"
+    >
+        Aucun résultat trouvé.
+    </div>
 
 </main>
+```
 
 </div>
 
+<script type="module">
 
-<script>
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
-/* RECHERCHE */
-
-const searchInput =
-document.getElementById("searchInput");
-
-const searchButton =
-document.getElementById("searchButton");
-
-const cards =
-document.querySelectorAll(".video-card");
-
-const noResult =
-document.getElementById("noResult");
-
-let currentCategory = "Tous";
-
-
-function filterVideos(){
-
-const search =
-searchInput.value.toLowerCase().trim();
-
-let count = 0;
-
-
-cards.forEach(card => {
-
-const title =
-card.dataset.title.toLowerCase();
-
-const category =
-card.dataset.category;
-
-
-const searchOK =
-title.includes(search);
-
-const categoryOK =
-currentCategory === "Tous" ||
-category === currentCategory;
-
-
-if(searchOK && categoryOK){
-
-card.style.display = "";
-
-count++;
-
-}else{
-
-card.style.display = "none";
-
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
 }
+from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+/* FIREBASE */
+
+const firebaseConfig = {
+
+    apiKey:
+    "AIzaSyCGwgzSrM2Z5-AW-Gjx4DJRp-RpJzrdZ4s",
+
+    authDomain:
+    "sun-video-8a3bd.firebaseapp.com",
+
+    projectId:
+    "sun-video-8a3bd",
+
+    storageBucket:
+    "sun-video-8a3bd.firebasestorage.app",
+
+    messagingSenderId:
+    "271262523518",
+
+    appId:
+    "1:271262523518:web:f6b5997c3a5e34dec9782f"
+
+};
+
+
+const app =
+    initializeApp(firebaseConfig);
+
+const auth =
+    getAuth(app);
+
+
+/* PROFIL */
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const profile =
+    document.getElementById("profile");
+
+const profileName =
+    document.getElementById("profileName");
+
+const avatar =
+    document.getElementById("avatar");
+
+const profileButton =
+    document.getElementById("profileButton");
+
+
+/* VERIFIER L'UTILISATEUR */
+
+onAuthStateChanged(auth, function(user){
+
+    if(user){
+
+        console.log(
+            "Utilisateur connecté :",
+            user.email
+        );
+
+
+        /* CACHER SE CONNECTER */
+
+        loginButton.style.display =
+            "none";
+
+
+        /* AFFICHER PROFIL */
+
+        profile.style.display =
+            "flex";
+
+
+        /* NOM */
+
+        const name =
+            user.displayName ||
+            user.email.split("@")[0];
+
+
+        profileName.textContent =
+            name;
+
+
+        /* PREMIERE LETTRE */
+
+        avatar.textContent =
+            name.charAt(0).toUpperCase();
+
+
+    }else{
+
+        /* PERSONNE CONNECTÉ */
+
+        loginButton.style.display =
+            "inline-block";
+
+        profile.style.display =
+            "none";
+
+    }
 
 });
 
 
-if(count === 0){
+/* CLIC SUR PROFIL */
 
-noResult.style.display = "block";
+profileButton.addEventListener(
+    "click",
+    function(){
 
-}else{
+        window.location.href =
+            "profile.html";
 
-noResult.style.display = "none";
+    }
+);
 
-}
+
+/* RECHERCHE */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const searchButton =
+    document.getElementById("searchButton");
+
+const cards =
+    document.querySelectorAll(".video-card");
+
+const noResult =
+    document.getElementById("noResult");
+
+let currentCategory =
+    "Tous";
+
+
+function filterVideos(){
+
+    const search =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    let count = 0;
+
+
+    cards.forEach(function(card){
+
+        const title =
+            card.dataset.title.toLowerCase();
+
+        const category =
+            card.dataset.category;
+
+
+        const searchOK =
+            title.includes(search);
+
+        const categoryOK =
+            currentCategory === "Tous" ||
+            category === currentCategory;
+
+
+        if(searchOK && categoryOK){
+
+            card.style.display = "";
+
+            count++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    if(count === 0){
+
+        noResult.style.display =
+            "block";
+
+    }else{
+
+        noResult.style.display =
+            "none";
+
+    }
 
 }
 
 
 searchInput.addEventListener(
-"input",
-filterVideos
+    "input",
+    filterVideos
 );
-
 
 searchButton.addEventListener(
-"click",
-filterVideos
+    "click",
+    filterVideos
 );
 
-
-/* CATEGORIES */
 
 document
 .querySelectorAll(".category")
-.forEach(button => {
+.forEach(function(button){
 
-button.addEventListener(
-"click",
-function(){
+    button.addEventListener(
+        "click",
+        function(){
 
-document
-.querySelectorAll(".category")
-.forEach(b =>
-b.classList.remove("active")
-);
+            document
+            .querySelectorAll(".category")
+            .forEach(function(b){
 
-this.classList.add("active");
+                b.classList.remove("active");
 
-currentCategory =
-this.dataset.category;
+            });
 
-filterVideos();
 
-}
-);
+            this.classList.add("active");
+
+
+            currentCategory =
+                this.dataset.category;
+
+
+            filterVideos();
+
+        }
+    );
 
 });
 
-
-/* MENU */
 
 document
 .querySelectorAll(".sidebar a[data-category]")
-.forEach(link => {
+.forEach(function(link){
 
-link.addEventListener(
-"click",
-function(event){
+    link.addEventListener(
+        "click",
+        function(event){
 
-event.preventDefault();
+            event.preventDefault();
 
-currentCategory =
-this.dataset.category;
+            currentCategory =
+                this.dataset.category;
 
-filterVideos();
+            filterVideos();
 
-}
-);
+        }
+    );
 
 });
 
 
-/* VIDEO */
-
 function openVideo(id){
 
-window.location.href =
-"video.html?video=" + id;
+    window.location.href =
+        "video.html?video=" + id;
 
 }
 
 </script>
 
-
 </body>
-
 </html>
-```
+
