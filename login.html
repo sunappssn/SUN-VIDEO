@@ -9,109 +9,105 @@
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    font-family:Arial,sans-serif;
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial,sans-serif;
 }
 
 body{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#f5f5f5;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f5f5f5;
 }
 
 .container{
-    width:100%;
-    max-width:450px;
-    padding:20px;
+width:100%;
+max-width:450px;
+padding:20px;
 }
 
 .logo{
-    text-align:center;
-    font-size:32px;
-    font-weight:bold;
-    color:#e60000;
-    margin-bottom:30px;
+text-align:center;
+font-size:32px;
+font-weight:bold;
+color:#e60000;
+margin-bottom:30px;
 }
 
 .card{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 5px 25px rgba(0,0,0,.08);
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 5px 25px rgba(0,0,0,.08);
 }
 
 h1{
-    margin-bottom:10px;
+margin-bottom:10px;
 }
 
 .subtitle{
-    color:#666;
-    margin-bottom:25px;
+color:#666;
+margin-bottom:25px;
 }
 
 label{
-    display:block;
-    margin-bottom:7px;
-    font-weight:bold;
+display:block;
+margin-bottom:7px;
+font-weight:bold;
 }
 
 input{
-    width:100%;
-    padding:13px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    margin-bottom:18px;
-    font-size:15px;
+width:100%;
+padding:13px;
+border:1px solid #ccc;
+border-radius:8px;
+margin-bottom:18px;
+font-size:15px;
 }
 
 input:focus{
-    outline:none;
-    border-color:#e60000;
+outline:none;
+border-color:#e60000;
 }
 
 button{
-    width:100%;
-    padding:13px;
-    border:0;
-    border-radius:25px;
-    background:#e60000;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#c90000;
+width:100%;
+padding:13px;
+border:0;
+border-radius:25px;
+background:#e60000;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
 #message{
-    margin-top:20px;
-    text-align:center;
-    font-weight:bold;
+margin-top:20px;
+text-align:center;
+font-weight:bold;
 }
 
 .register{
-    text-align:center;
-    margin-top:20px;
+text-align:center;
+margin-top:20px;
 }
 
 .register a{
-    color:#e60000;
-    font-weight:bold;
-    text-decoration:none;
+color:#e60000;
+font-weight:bold;
+text-decoration:none;
 }
 
 .back{
-    display:block;
-    text-align:center;
-    margin-top:20px;
-    color:#555;
-    text-decoration:none;
+display:block;
+text-align:center;
+margin-top:20px;
+color:#555;
+text-decoration:none;
 }
 </style>
 
@@ -127,9 +123,7 @@ button:hover{
 
 <div class="card">
 
-<h1>
-Se connecter
-</h1>
+<h1>Se connecter</h1>
 
 <p class="subtitle">
 Connecte-toi à ton compte SUN VIDEO.
@@ -137,9 +131,7 @@ Connecte-toi à ton compte SUN VIDEO.
 
 <form id="loginForm">
 
-<label>
-Email
-</label>
+<label>Email</label>
 
 <input
 id="email"
@@ -149,9 +141,7 @@ required
 
 >
 
-<label>
-Mot de passe
-</label>
+<label>Mot de passe</label>
 
 <input
 id="password"
@@ -176,13 +166,9 @@ Créer un compte
 </a>
 </div>
 
-<a
-class="back"
-href="index.html"
-
->
-
-← Retour à SUN VIDEO </a>
+<a class="back" href="index.html">
+← Retour à SUN VIDEO
+</a>
 
 </div>
 
@@ -198,8 +184,8 @@ from
 
 
 import {
-getAuth,
-setPersistence,
+initializeAuth,
+indexedDBLocalPersistence,
 browserLocalPersistence,
 signInWithEmailAndPassword
 }
@@ -233,8 +219,23 @@ appId:
 const app =
 initializeApp(firebaseConfig);
 
+
+/*
+Firebase utilise d'abord IndexedDB.
+Si ce stockage n'est pas disponible,
+il peut utiliser localStorage.
+*/
+
 const auth =
-getAuth(app);
+initializeAuth(app, {
+
+persistence: [
+indexedDBLocalPersistence,
+browserLocalPersistence
+]
+
+});
+
 
 const form =
 document.getElementById("loginForm");
@@ -272,12 +273,6 @@ message.style.color =
 
 try{
 
-await setPersistence(
-auth,
-browserLocalPersistence
-);
-
-
 const userCredential =
 await signInWithEmailAndPassword(
 auth,
@@ -291,18 +286,28 @@ userCredential.user;
 
 
 console.log(
-"CONNEXION RÉUSSIE :",
-user
+"COMPTE CONNECTÉ :",
+user.email
 );
 
 
 message.innerHTML =
-"✅ Connexion réussie ! Tu peux maintenant retourner sur SUN VIDEO.";
+"✅ Connexion réussie !";
 
 
 message.style.color =
 "green";
 
+
+setTimeout(
+function(){
+
+window.location.href =
+"index.html";
+
+},
+1000
+);
 
 }
 
@@ -314,54 +319,8 @@ error
 );
 
 
-if(
-error.code ===
-"auth/invalid-credential"
-){
-
 message.innerHTML =
-"❌ Email ou mot de passe incorrect.";
-
-}
-
-else if(
-error.code ===
-"auth/invalid-email"
-){
-
-message.innerHTML =
-"❌ Adresse email invalide.";
-
-}
-
-else if(
-error.code ===
-"auth/operation-not-allowed"
-){
-
-message.innerHTML =
-"❌ La connexion par email n'est pas activée dans Firebase.";
-
-}
-
-else if(
-error.code ===
-"auth/network-request-failed"
-){
-
-message.innerHTML =
-"❌ Problème de connexion Internet.";
-
-}
-
-else{
-
-message.innerHTML =
-"❌ Erreur : " +
-error.code;
-
-}
-
+"❌ " + error.code;
 
 message.style.color =
 "red";
