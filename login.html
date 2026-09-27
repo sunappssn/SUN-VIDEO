@@ -233,10 +233,8 @@ appId:
 const app =
 initializeApp(firebaseConfig);
 
-
 const auth =
 getAuth(app);
-
 
 const form =
 document.getElementById("loginForm");
@@ -274,12 +272,6 @@ message.style.color =
 
 try{
 
-/*
-IMPORTANT :
-Firebase doit conserver
-la connexion dans le navigateur.
-*/
-
 await setPersistence(
 auth,
 browserLocalPersistence
@@ -305,22 +297,11 @@ user
 
 
 message.innerHTML =
-"✅ Connexion réussie !";
+"✅ Connexion réussie ! Tu peux maintenant retourner sur SUN VIDEO.";
 
 
 message.style.color =
 "green";
-
-
-setTimeout(
-function(){
-
-window.location.href =
-"index.html";
-
-},
-1000
-);
 
 
 }
