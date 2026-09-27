@@ -4,9 +4,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SUN VIDEO</title>
 
 <style>
+
 *{
 box-sizing:border-box;
 margin:0;
@@ -200,9 +202,11 @@ font-size:13px;
 }
 
 @media(max-width:900px){
+
 .video-grid{
 grid-template-columns:repeat(2,1fr);
 }
+
 }
 
 @media(max-width:650px){
@@ -219,16 +223,16 @@ font-size:20px;
 display:none;
 }
 
+.layout{
+display:block;
+}
+
 .sidebar{
 width:100%;
 min-height:auto;
 display:flex;
 overflow-x:auto;
 padding:8px;
-}
-
-.layout{
-display:block;
 }
 
 .content{
@@ -240,6 +244,7 @@ grid-template-columns:1fr;
 }
 
 }
+
 </style>
 
 </head>
@@ -337,9 +342,13 @@ Mon compte
 📰 Actualités
 </a>
 
-<a id="channelLink" href="login.html">
-👤 Ma chaîne
-</a>
+<a
+id="channelLink"
+href="login.html"
+
+>
+
+👤 Ma chaîne </a>
 
 </aside>
 
@@ -479,6 +488,7 @@ SUN ÉDUCATION
 
 <script type="module">
 
+
 import {
 initializeApp
 }
@@ -487,7 +497,9 @@ from
 
 
 import {
-getAuth,
+initializeAuth,
+indexedDBLocalPersistence,
+browserLocalPersistence,
 onAuthStateChanged
 }
 from
@@ -521,32 +533,55 @@ const app =
 initializeApp(firebaseConfig);
 
 
+/*
+Même système de session
+que dans login.html.
+*/
+
 const auth =
-getAuth(app);
+initializeAuth(
+app,
+{
+persistence:[
+indexedDBLocalPersistence,
+browserLocalPersistence
+]
+}
+);
 
 
 const loginButton =
-document.getElementById("loginButton");
+document.getElementById(
+"loginButton"
+);
 
 const profile =
-document.getElementById("profile");
+document.getElementById(
+"profile"
+);
 
 const profileName =
-document.getElementById("profileName");
+document.getElementById(
+"profileName"
+);
 
 const avatar =
-document.getElementById("avatar");
+document.getElementById(
+"avatar"
+);
 
 const channelLink =
-document.getElementById("channelLink");
+document.getElementById(
+"channelLink"
+);
 
 
 onAuthStateChanged(
 auth,
-(user) => {
+function(user){
 
 console.log(
-"ÉTAT DU COMPTE :",
+"COMPTE DÉTECTÉ :",
 user
 );
 
@@ -554,7 +589,7 @@ user
 if(user){
 
 console.log(
-"COMPTE CONNECTÉ :",
+"EMAIL DU COMPTE :",
 user.email
 );
 
@@ -593,13 +628,12 @@ name
 channelLink.href =
 "profile.html";
 
-
 }
 
 else{
 
 console.log(
-"AUCUN COMPTE CONNECTÉ"
+"AUCUN COMPTE"
 );
 
 
@@ -630,6 +664,7 @@ window.location.href =
 
 }
 );
+
 
 </script>
 
