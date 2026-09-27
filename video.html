@@ -6,10 +6,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>SUN VIDEO - Vidéo</title>
+<title>SUN VIDEO</title>
 
 <style>
 
@@ -35,7 +34,7 @@ gap:20px;
 padding:0 20px;
 position:sticky;
 top:0;
-z-index:10;
+z-index:100;
 }
 
 .logo{
@@ -57,7 +56,6 @@ padding:12px 18px;
 border:1px solid #ccc;
 border-radius:25px;
 outline:none;
-font-size:15px;
 }
 
 .back{
@@ -77,7 +75,7 @@ padding:0 20px;
 .player{
 width:100%;
 aspect-ratio:16/9;
-background:#111;
+background:#000;
 border-radius:12px;
 overflow:hidden;
 }
@@ -197,6 +195,7 @@ font-size:20px;
 
 <body>
 
+
 <header>
 
 <div class="logo">
@@ -225,13 +224,15 @@ onclick="location.href='index.html'">
 
 <main>
 
-<!-- LECTEUR VIDÉO -->
+
+<!-- LECTEUR -->
 
 <div class="player">
 
 <video controls>
 
 <source
+id="videoSource"
 src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
 type="video/mp4"
 >
@@ -245,23 +246,27 @@ Votre navigateur ne peut pas lire cette vidéo.
 
 <!-- TITRE -->
 
-<div class="title">
+<div
+class="title"
+id="videoTitle">
 
 Bienvenue sur SUN VIDEO
 
 </div>
 
 
-<!-- CHAÎNE -->
+<!-- CHAINE -->
 
-<div class="channel">
+<div
+class="channel"
+id="videoChannel">
 
 SUN VIDEO • 1,2 k vues
 
 </div>
 
 
-<!-- BOUTONS -->
+<!-- ACTIONS -->
 
 <div class="actions">
 
@@ -301,175 +306,25 @@ S'abonner
 
 <!-- DESCRIPTION -->
 
-<div class="description">
+<div
+class="description"
+id="videoDescription">
 
 <strong>Description</strong>
 
 <br><br>
 
-Bienvenue sur <strong>SUN VIDEO</strong>.
+Bienvenue sur SUN VIDEO.
 
 <br><br>
 
-SUN VIDEO est une plateforme permettant
-de regarder et de partager des vidéos.
-
-<br><br>
-
-🎵 Musique • ⚽ Sport • 🎮 Gaming
-• 📚 Éducation • 📰 Actualités
+Une plateforme vidéo destinée à regarder
+et partager différents contenus.
 
 </div>
 
 
 <!-- COMMENTAIRES -->
 
-<section class="comments">
-
-<h2>
-
-💬 Commentaires
-
-</h2>
-
-
-<div class="comment-box">
-
-<input
-id="commentInput"
-type="text"
-placeholder="Écrire un commentaire..."
->
-
-<button onclick="addComment()">
-
-Publier
-
-</button>
-
-</div>
-
-
-<div id="commentList">
-
-</div>
-
-</section>
-
-</main>
-
-
-<script>
-
-let likes=0;
-
-let subscribed=false;
-
-
-function likeVideo(){
-
-likes++;
-
-document.getElementById("likes")
-.innerText=likes;
-
-}
-
-
-function subscribe(){
-
-subscribed=!subscribed;
-
-document.getElementById("subscribeText")
-.innerText=
-
-subscribed
-?
-"Abonné ✓"
-:
-"S'abonner";
-
-}
-
-
-function shareVideo(){
-
-if(navigator.share){
-
-navigator.share({
-
-title:"SUN VIDEO",
-
-text:"Regarde cette vidéo sur SUN VIDEO",
-
-url:window.location.href
-
-});
-
-}else{
-
-navigator.clipboard.writeText(
-window.location.href
-);
-
-alert("Lien de la vidéo copié !");
-
-}
-
-}
-
-
-function focusComment(){
-
-document
-.getElementById("commentInput")
-.focus();
-
-}
-
-
-function addComment(){
-
-const input=
-document.getElementById("commentInput");
-
-const text=input.value.trim();
-
-
-if(text===""){
-
-alert("Écris un commentaire.");
-
-return;
-
-}
-
-
-const comment=
-document.createElement("div");
-
-comment.className="comment";
-
-
-comment.innerHTML=
-
-"<strong>Utilisateur</strong><br>"
-+
-text;
-
-
-document
-.getElementById("commentList")
-.prepend(comment);
-
-
-input.value="";
-
-}
-
-</script>
-
-</body>
-
-</html>
+<section class="c
 ```
