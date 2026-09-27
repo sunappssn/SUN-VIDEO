@@ -1,13 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SUN VIDEO - Inscription</title>
 
@@ -143,7 +139,7 @@ Créer un compte
 Rejoins gratuitement SUN VIDEO.
 </p>
 
-<form onsubmit="register(event)">
+<form id="registerForm">
 
 <label>
 Nom d'utilisateur
@@ -197,10 +193,7 @@ Créer mon compte
 
 </form>
 
-<div
-id="message"
-class="message">
-</div>
+<div id="message" class="message"></div>
 
 <div class="login">
 
@@ -212,12 +205,8 @@ Se connecter
 
 </div>
 
-<a
-class="back"
-href="index.html">
-
+<a class="back" href="index.html">
 ← Retour à SUN VIDEO
-
 </a>
 
 </div>
@@ -225,11 +214,50 @@ href="index.html">
 </div>
 
 
-<script>
+<script type="module">
 
-function register(event){
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+getAuth,
+createUserWithEmailAndPassword,
+updateProfile
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCGwgzSrM2Z5-AW-Gjx4DJBR-RpJzrdZ4s",
+
+authDomain: "sun-video-8a3bd.firebaseapp.com",
+
+projectId: "sun-video-8a3bd",
+
+storageBucket: "sun-video-8a3bd.firebasestorage.app",
+
+messagingSenderId: "271262523518",
+
+appId: "1:271262523518:web:f6b5997c3a5e34dec9782f"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+
+const form =
+document.getElementById("registerForm");
+
+const message =
+document.getElementById("message");
+
+
+form.addEventListener("submit", async function(event){
 
 event.preventDefault();
+
 
 const username =
 document.getElementById("username").value.trim();
@@ -242,9 +270,6 @@ document.getElementById("password").value;
 
 const confirmPassword =
 document.getElementById("confirmPassword").value;
-
-const message =
-document.getElementById("message");
 
 
 if(password !== confirmPassword){
@@ -272,15 +297,83 @@ return;
 
 
 message.innerText =
-"✅ Formulaire correct !";
+"Création du compte...";
+
+message.style.color="#555";
+
+
+try{
+
+const userCredential =
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+await updateProfile(
+userCredential.user,
+{
+displayName: username
+}
+);
+
+
+message.innerText =
+"✅ Compte créé avec succès !";
 
 message.style.color="green";
 
+
+setTimeout(function(){
+
+window.location.href="index.html";
+
+},1500);
+
+
+}catch(error){
+
+console.error(error);
+
+
+if(error.code === "auth/email-already-in-use"){
+
+message.innerText =
+"❌ Cette adresse e-mail possède déjà un compte.";
+
 }
+
+else if(error.code === "auth/invalid-email"){
+
+message.innerText =
+"❌ Adresse e-mail invalide.";
+
+}
+
+else if(error.code === "auth/weak-password"){
+
+message.innerText =
+"❌ Mot de passe trop faible.";
+
+}
+
+else{
+
+message.innerText =
+"❌ Une erreur est survenue. Réessaie.";
+
+}
+
+message.style.color="red";
+
+}
+
+});
 
 </script>
 
 </body>
 
 </html>
-```
